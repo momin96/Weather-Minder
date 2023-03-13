@@ -14,6 +14,7 @@
 		50E96A4B29BF2578009A1190 /* Weather_MinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A4A29BF2578009A1190 /* Weather_MinderTests.swift */; };
 		50E96A5529BF2578009A1190 /* Weather_MinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A5429BF2578009A1190 /* Weather_MinderUITests.swift */; };
 		50E96A5729BF2578009A1190 /* Weather_MinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A5629BF2578009A1190 /* Weather_MinderUITestsLaunchTests.swift */; };
+		50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6329BF26A5009A1190 /* EndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		50E96A5029BF2578009A1190 /* Weather MinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather MinderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E96A5429BF2578009A1190 /* Weather_MinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_MinderUITests.swift; sourceTree = "<group>"; };
 		50E96A5629BF2578009A1190 /* Weather_MinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_MinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		50E96A6329BF26A5009A1190 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */,
 				50E96A3B29BF2577009A1190 /* ContentView.swift */,
+				50E96A6529BF2720009A1190 /* Network Layer */,
 				50E96A3D29BF2578009A1190 /* Assets.xcassets */,
 				50E96A3F29BF2578009A1190 /* Preview Content */,
 			);
@@ -125,6 +128,14 @@
 				50E96A5629BF2578009A1190 /* Weather_MinderUITestsLaunchTests.swift */,
 			);
 			path = "Weather MinderUITests";
+			sourceTree = "<group>";
+		};
+		50E96A6529BF2720009A1190 /* Network Layer */ = {
+			isa = PBXGroup;
+			children = (
+				50E96A6329BF26A5009A1190 /* EndPoint.swift */,
+			);
+			path = "Network Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */,
 				50E96A3C29BF2577009A1190 /* ContentView.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
 			);
