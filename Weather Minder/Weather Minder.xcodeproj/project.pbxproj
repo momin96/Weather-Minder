@@ -17,6 +17,7 @@
 		50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6329BF26A5009A1190 /* EndPoint.swift */; };
 		50E96A6829BF28E4009A1190 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E96A6729BF28E4009A1190 /* CoreLocation.framework */; };
 		50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6929BF2C46009A1190 /* HomeView.swift */; };
+		50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6B29BF3058009A1190 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		50E96A6329BF26A5009A1190 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		50E96A6729BF28E4009A1190 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		50E96A6929BF2C46009A1190 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		50E96A6B29BF3058009A1190 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */,
 				50E96A3B29BF2577009A1190 /* ContentView.swift */,
 				50E96A6929BF2C46009A1190 /* HomeView.swift */,
+				50E96A6B29BF3058009A1190 /* LocationManager.swift */,
 				50E96A6529BF2720009A1190 /* Network Layer */,
 				50E96A3D29BF2578009A1190 /* Assets.xcassets */,
 				50E96A3F29BF2578009A1190 /* Preview Content */,
@@ -285,6 +288,7 @@
 			files = (
 				50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */,
 				50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */,
+				50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */,
 				50E96A3C29BF2577009A1190 /* ContentView.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
 			);

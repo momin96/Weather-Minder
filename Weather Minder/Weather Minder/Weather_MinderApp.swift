@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Weather_MinderApp: App {
+    @State private var locationManager = LocationManager()
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(locationManager)
         }
     }
 }
