@@ -39,7 +39,8 @@ class WeatherListViewModel: ObservableObject {
                     let coordinates = try await geocodeUseCase.execute(with: city)
                     await getWeather(for: city, and: coordinates)
                 } catch {
-                    print(error)
+                    prepareCachedData(for: city)
+                    throw error
                 }
             }
         }
@@ -55,6 +56,17 @@ class WeatherListViewModel: ObservableObject {
             }
         } catch {
             print("Error \(error)")
+        }
+    }
+    
+    func prepareCachedData(for cityName: String) {
+        guard let wrappedData: City? = Storage().retrive(for: cityName),
+            let cachedData = wrappedData else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.cities.append(cachedData)
         }
     }
 }
