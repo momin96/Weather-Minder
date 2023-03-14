@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */; };
-		50E96A3C29BF2577009A1190 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A3B29BF2577009A1190 /* ContentView.swift */; };
+		50E96A3C29BF2577009A1190 /* WeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A3B29BF2577009A1190 /* WeatherListView.swift */; };
 		50E96A3E29BF2578009A1190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50E96A3D29BF2578009A1190 /* Assets.xcassets */; };
 		50E96A4129BF2578009A1190 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50E96A4029BF2578009A1190 /* Preview Assets.xcassets */; };
 		50E96A4B29BF2578009A1190 /* Weather_MinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A4A29BF2578009A1190 /* Weather_MinderTests.swift */; };
@@ -20,6 +20,7 @@
 		50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6B29BF3058009A1190 /* LocationManager.swift */; };
 		50E96A7229C026C6009A1190 /* GeoCoderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */; };
 		50E96A7429C0424E009A1190 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7329C0424E009A1190 /* City.swift */; };
+		50E96A7829C06651009A1190 /* GetWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7729C06651009A1190 /* GetWeatherUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,7 @@
 /* Begin PBXFileReference section */
 		50E96A3629BF2577009A1190 /* Weather Minder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Minder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_MinderApp.swift; sourceTree = "<group>"; };
-		50E96A3B29BF2577009A1190 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		50E96A3B29BF2577009A1190 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
 		50E96A3D29BF2578009A1190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50E96A4029BF2578009A1190 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50E96A4629BF2578009A1190 /* Weather MinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather MinderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +57,7 @@
 		50E96A6B29BF3058009A1190 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCoderUseCase.swift; sourceTree = "<group>"; };
 		50E96A7329C0424E009A1190 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		50E96A7729C06651009A1190 /* GetWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */,
-				50E96A3B29BF2577009A1190 /* ContentView.swift */,
+				50E96A3B29BF2577009A1190 /* WeatherListView.swift */,
 				50E96A6929BF2C46009A1190 /* HomeView.swift */,
-				50E96A6B29BF3058009A1190 /* LocationManager.swift */,
-				50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */,
+				50E96A7929C066EF009A1190 /* UseCases */,
+				50E96A7629C05954009A1190 /* Core Location */,
 				50E96A7529C042A0009A1190 /* Models */,
 				50E96A6529BF2720009A1190 /* Network Layer */,
 				50E96A3D29BF2578009A1190 /* Assets.xcassets */,
@@ -168,6 +170,23 @@
 				50E96A7329C0424E009A1190 /* City.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		50E96A7629C05954009A1190 /* Core Location */ = {
+			isa = PBXGroup;
+			children = (
+				50E96A6B29BF3058009A1190 /* LocationManager.swift */,
+				50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */,
+			);
+			path = "Core Location";
+			sourceTree = "<group>";
+		};
+		50E96A7929C066EF009A1190 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				50E96A7729C06651009A1190 /* GetWeatherUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +322,9 @@
 				50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */,
 				50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */,
 				50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */,
+				50E96A7829C06651009A1190 /* GetWeatherUseCase.swift in Sources */,
 				50E96A7229C026C6009A1190 /* GeoCoderUseCase.swift in Sources */,
-				50E96A3C29BF2577009A1190 /* ContentView.swift in Sources */,
+				50E96A3C29BF2577009A1190 /* WeatherListView.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
 				50E96A7429C0424E009A1190 /* City.swift in Sources */,
 			);

@@ -15,7 +15,7 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            ContentView()
+            WeatherListView()
             locationManager.currentLocation.map { location in
                 HStack {
                     Text("\(location.coordinate.latitude)")

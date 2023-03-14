@@ -8,10 +8,11 @@
 import Foundation
 import CoreLocation
 
-class City {
+class City: ObservableObject, Identifiable {
+    var id = UUID()
     var name: String
     var coordinates: CLLocationCoordinate2D
-    var weather: WeatherResponse?
+    @Published var weather: WeatherResponse?
     
     init(
         name: String,
@@ -37,11 +38,15 @@ struct Coordinates: Codable {
     let lat: Double
 }
 
-struct Weather: Codable {
+struct Weather:Identifiable, Codable {
     let id: Int
     let main: String
     let description: String
     let icon: String
+    
+    var weatherDescription: String {
+        "It seems \(description)"
+    }
 }
 
 struct Main: Codable {
@@ -52,8 +57,16 @@ struct Main: Codable {
         case tempMin = "temp_min"
         case tempMax = "temp_max"
     }
+    
+    var minimumaAndMaximumTempreture: String {
+        "Today min & max temprature would be \(String(format: "%.2f", tempMin)) \(String(format: "%.2f", tempMax)) respectivly."
+    }
 }
 
 struct Wind: Codable {
     let speed: Double
+    
+    var windSpeedString: String {
+        "Wind speed is about \(String(format: "%.2f", speed))"
+    }
 }
