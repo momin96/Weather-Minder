@@ -33,9 +33,8 @@ class WeatherListViewModel: ObservableObject {
     func performSearch(with text: String) {
         cities = []
         let cities = text.components(separatedBy: ",")
-        print("cities \(cities)")
-        for city in cities {
-            Task {
+        Task {
+            for city in cities {
                 do {
                     let coordinates = try await geocodeUseCase.execute(with: city)
                     await getWeather(for: city, and: coordinates)
@@ -47,8 +46,8 @@ class WeatherListViewModel: ObservableObject {
     }
 
     func getWeather(for cityName: String, and coordinates: CLLocationCoordinate2D) async {
-        let city = City(name: cityName, coordinates: coordinates)
         do {
+            let city = City(name: cityName, coordinates: coordinates)
             let weatherResponse = try await weatherUseCase.execute(with: city)
             city.weather = weatherResponse
             await MainActor.run {

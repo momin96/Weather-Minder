@@ -70,7 +70,6 @@ class HomeViewModel {
         Task {
             do {
                 let forecastResponse = try await weatherForecastUseCase.execute(with: coordinates)
-                print(forecastResponse)
             } catch {
                 print(error)
             }

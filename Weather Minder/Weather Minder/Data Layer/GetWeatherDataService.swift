@@ -13,7 +13,6 @@ protocol GetWeatherDataService {
 
 struct GetWeatherDataServiceImpl: GetWeatherDataService {
     func getWeather(for city: City) async throws -> (Data, URLResponse) {
-        
         let endPoint = Endpoint.getWeatherForCity(with: city.coordinates)
         let urlRequest = GetWeatherForCityRequest().asURLRequest(endpoint: endPoint)
         
