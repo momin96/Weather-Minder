@@ -13,6 +13,8 @@ protocol WeatherUseCase {
     func execute(with input: Input) async throws -> Output
 }
 
+// MARK: - WeatherUseCaseImpl
+/// UseCase for Fetching Weather based on searched City, which confirms to `WeatherUseCase`
 struct WeatherUseCaseImpl: WeatherUseCase {
     
     typealias Input = City
@@ -23,18 +25,15 @@ struct WeatherUseCaseImpl: WeatherUseCase {
     func execute(with city: City) async throws -> WeatherResponse {
         let (data, response) = try await getWeatherDataService.getWeather(for: city)
         
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw NSError(domain: "app.web.nasirmomin.getweatherusecase",
-                          code: 1,
-                          userInfo: [NSLocalizedDescriptionKey: "Unable to parse weather"])
-        }
+        typealias ParseInputType = (Data, URLResponse)
+        typealias ParseOutputType = WeatherResponse
         
-        let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
-        return weatherResponse
+        return try await DataParser<ParseInputType, ParseOutputType>().parse(with: (data, response))
     }
 }
 
+// MARK: - WeatherForecastUseCaseImpl
+// UseCase for Fetching Forecast Data based on Current location's coordinates, which confirms to `WeatherUseCase`
 struct WeatherForecastUseCaseImpl: WeatherUseCase {
     
     typealias Input = CLLocationCoordinate2D
@@ -45,14 +44,9 @@ struct WeatherForecastUseCaseImpl: WeatherUseCase {
     func execute(with input: Input) async throws -> WeatherForecastResponse {
         let (data, response) = try await getWeatherForecastDataService.getForecast(for: input)
         
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw NSError(domain: "app.web.nasirmomin.getweatherusecase",
-                          code: 1,
-                          userInfo: [NSLocalizedDescriptionKey: "Unable to parse weather"])
-        }
+        typealias ParseInputType = (Data, URLResponse)
+        typealias ParseOutputType = WeatherForecastResponse
         
-        let forecastResponse = try JSONDecoder().decode(WeatherForecastResponse.self, from: data)
-        return forecastResponse
+        return try await DataParser<ParseInputType, ParseOutputType>().parse(with: (data, response))
     }
 }
