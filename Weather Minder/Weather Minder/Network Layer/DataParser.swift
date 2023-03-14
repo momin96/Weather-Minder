@@ -17,9 +17,9 @@ struct DataParser<Input: Any, Output: Decodable>: Parseable {
     func parse(with input: (Data, URLResponse)) async throws -> Output {
         guard let httpResponse = input.1 as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
-            throw NSError(domain: "app.web.nasirmomin.getweatherusecase",
+            throw NSError(domain: "app.web.nasirmomin.dataParsingError",
                           code: 1,
-                          userInfo: [NSLocalizedDescriptionKey: "Unable to parse weather"])
+                          userInfo: [NSLocalizedDescriptionKey: "Unable to parse data of type \(Input.self)"])
         }
         
         let weatherResponse = try JSONDecoder().decode(Output.self, from: input.0)
