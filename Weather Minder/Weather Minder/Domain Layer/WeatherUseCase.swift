@@ -20,10 +20,10 @@ struct WeatherUseCaseImpl: WeatherUseCase {
     typealias Input = City
     typealias Output = WeatherResponse
     
-    let getWeatherDataService: GetWeatherDataService
+    let getWeatherDataService: GetWeatherDataServiceImpl
     
-    func execute(with city: City) async throws -> WeatherResponse {
-        let (data, response) = try await getWeatherDataService.getWeather(for: city)
+    func execute(with input: City) async throws -> WeatherResponse {
+        let (data, response) = try await getWeatherDataService.execute(with: input)
         
         typealias ParseInputType = (Data, URLResponse)
         typealias ParseOutputType = WeatherResponse
@@ -39,10 +39,10 @@ struct WeatherForecastUseCaseImpl: WeatherUseCase {
     typealias Input = CLLocationCoordinate2D
     typealias Output = WeatherForecastResponse
     
-    let getWeatherForecastDataService: GetWeatherForecastDataService
+    let getWeatherForecastDataService: GetWeatherForecastDataServiceImpl
     
     func execute(with input: Input) async throws -> WeatherForecastResponse {
-        let (data, response) = try await getWeatherForecastDataService.getForecast(for: input)
+        let (data, response) = try await getWeatherForecastDataService.execute(with: input)
         
         typealias ParseInputType = (Data, URLResponse)
         typealias ParseOutputType = WeatherForecastResponse
