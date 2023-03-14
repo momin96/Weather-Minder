@@ -18,10 +18,10 @@ struct GeocodeUseCaseImpl: GeocodeUseCase {
     typealias Input = String
     typealias Output = CLLocationCoordinate2D
     
-    let geocodeDataService: GeocodeDataService
+    let geocodeDataService: GeocodeDataServiceImpl
 
     func execute(with input: String) async throws -> CLLocationCoordinate2D {
-        try await geocodeDataService.geocode(with: input)
+        try await geocodeDataService.execute(with: input)
     }
 }
 
@@ -29,9 +29,9 @@ struct ReverseGeocodeUseCaseImpl: GeocodeUseCase {
     typealias Input = CLLocationCoordinate2D
     typealias Output = String
     
-    let reverseGeocodeDataService: ReverseGeocodeDataService
+    let reverseGeocodeDataService: ReverseGeocodeDataServiceImpl
     
-    func execute(with coordinates: CLLocationCoordinate2D) async throws -> String {
-        try await reverseGeocodeDataService.reverseGeocode(with: coordinates)
+    func execute(with input: CLLocationCoordinate2D) async throws -> String {
+        try await reverseGeocodeDataService.execute(with: input)
     }
 }
