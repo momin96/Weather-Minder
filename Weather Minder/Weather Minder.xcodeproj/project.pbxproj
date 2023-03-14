@@ -26,6 +26,7 @@
 		50E96A8129C075FD009A1190 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8029C075FD009A1190 /* WeatherListViewModel.swift */; };
 		50E96A8329C096EE009A1190 /* WeatherForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8229C096EE009A1190 /* WeatherForecastResponse.swift */; };
 		50E96A8529C0970B009A1190 /* GetForecastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8429C0970B009A1190 /* GetForecastRequest.swift */; };
+		50E96A8729C09B8C009A1190 /* GetWeatherForCityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8629C09B8C009A1190 /* GetWeatherForCityRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		50E96A8029C075FD009A1190 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 		50E96A8229C096EE009A1190 /* WeatherForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastResponse.swift; sourceTree = "<group>"; };
 		50E96A8429C0970B009A1190 /* GetForecastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetForecastRequest.swift; sourceTree = "<group>"; };
+		50E96A8629C09B8C009A1190 /* GetWeatherForCityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherForCityRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				50E96A6329BF26A5009A1190 /* EndPoint.swift */,
 				50E96A8429C0970B009A1190 /* GetForecastRequest.swift */,
+				50E96A8629C09B8C009A1190 /* GetWeatherForCityRequest.swift */,
 			);
 			path = "Network Layer";
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E96A8729C09B8C009A1190 /* GetWeatherForCityRequest.swift in Sources */,
 				50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */,
 				50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */,
 				50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */,

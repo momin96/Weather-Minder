@@ -33,6 +33,7 @@ class WeatherListViewModel: ObservableObject {
     func performSearch(with text: String) {
         cities = []
         let cities = text.components(separatedBy: ",")
+        print("cities \(cities)")
         for city in cities {
             Task {
                 do {
@@ -50,7 +51,9 @@ class WeatherListViewModel: ObservableObject {
         do {
             let weatherResponse = try await weatherUseCase.execute(with: city)
             city.weather = weatherResponse
-            cities.append(city)
+            await MainActor.run {
+                cities.append(city)
+            }
         } catch {
             print("Error \(error)")
         }

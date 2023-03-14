@@ -13,11 +13,15 @@ protocol GetWeatherDataService {
 
 struct GetWeatherDataServiceImpl: GetWeatherDataService {
     func getWeather(for city: City) async throws -> (Data, URLResponse) {
-        let endPoint = EndPoint1.getWeatherForCityWith(coordinate: city.coordinates)
-        if let url = endPoint.apiURL {
-            return try await URLSession.shared.data(from: url)
+        
+        let endPoint = Endpoint.getWeatherForCity(with: city.coordinates)
+        let urlRequest = GetWeatherForCityRequest().asURLRequest(endpoint: endPoint)
+        
+        if let urlRequest {
+            return try await URLSession.shared.data(for: urlRequest)
         }
-        throw NSError(domain: "app.web.nasirmomin.getweatherusecase",
+        
+        throw NSError(domain: "app.web.nasirmomin.getWeatherDataService",
                       code: 1,
                       userInfo: [NSLocalizedDescriptionKey: "Unable to fetch city's weather"])
     }
@@ -29,11 +33,14 @@ protocol GetWeatherForecastDataService {
 
 struct GetWeatherForecastDataServiceImpl: GetWeatherForecastDataService {
     func getForecast(for coordinates: CLLocationCoordinate2D) async throws -> (Data, URLResponse) {
+        
         let endPoint = Endpoint.getForecast(for: coordinates)
         let urlRequest = GetForecastRequest().asURLRequest(endpoint: endPoint)
+        
         if let urlRequest {
             return try await URLSession.shared.data(for: urlRequest)
         }
+        
         throw NSError(domain: "app.web.nasirmomin.getWeatherForecastDataService",
                       code: 1,
                       userInfo: [NSLocalizedDescriptionKey: "Unable to fetch Weather Forecase data"])
