@@ -16,6 +16,19 @@ struct GeocodeUseCaseImpl: GeocodeUseCase {
     let geocodeDataService: GeocodeDataService
     
     func execute(with city: String) async throws -> CLLocationCoordinate2D {
-        return try await geocodeDataService.geocode(with: city)
+        try await geocodeDataService.geocode(with: city)
+    }
+}
+
+protocol ReverseGeocodeUseCase {
+    func execute(with coordinates: CLLocationCoordinate2D) async throws -> String
+}
+
+struct ReverseGeocodeUseCaseImpl: ReverseGeocodeUseCase {
+    
+    let reverseGeocodeDataService: ReverseGeocodeDataService
+    
+    func execute(with coordinates: CLLocationCoordinate2D) async throws -> String {
+        try await reverseGeocodeDataService.reverseGeocode(with: coordinates)
     }
 }
