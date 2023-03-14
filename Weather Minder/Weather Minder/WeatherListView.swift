@@ -71,10 +71,12 @@ class ContentViewModel: ObservableObject {
     @Published var disableSearchButton = false
     @Published var cities: [City] = []
 
-    let getWeatherUseCase: GetWeatherUseCase
-
+    let geocodeUseCase: GeocodeUseCase
+    let weatherUseCase: WeatherUseCase
+    
     init() {
-        getWeatherUseCase = GetWeatherUseCase()
+        geocodeUseCase = GeocodeUseCaseImpl(geocodeDataService: GeocodeDataServiceImpl())
+        weatherUseCase = WeatherUseCaseImpl(getWeatherDataService: GetWeatherDataServiceImpl())
     }
     
     func shouldEnabledSearch(from text: String) {
@@ -92,7 +94,7 @@ class ContentViewModel: ObservableObject {
         for city in cities {
             Task {
                 do {
-                    let coordinates = try await GeoCoderUseCase().geocode(with: city)
+                    let coordinates = try await geocodeUseCase.execute(with: city)
                     await getWeather(for: city, and: coordinates)
                 } catch {
                     print(error)
@@ -104,16 +106,9 @@ class ContentViewModel: ObservableObject {
     func getWeather(for cityName: String, and coordinates: CLLocationCoordinate2D) async {
         let city = City(name: cityName, coordinates: coordinates)
         do {
-            let (data, response) = try await getWeatherUseCase.execute(with: city)
-            if let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200 {
-                let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
-                await MainActor.run {
-                    objectWillChange.send()
-                    city.weather = weatherResponse
-                    cities.append(city)
-                }
-            }
+            let weatherResponse = try await weatherUseCase.execute(with: city)
+            city.weather = weatherResponse
+            cities.append(city)
         } catch {
             print("Error \(error)")
         }
