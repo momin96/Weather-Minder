@@ -6,6 +6,28 @@
 //
 
 import Foundation
+import CoreLocation
+
+enum Constants {
+    static var APIKey = "3a86705615ad0202891a89647da3b629"
+}
+
+enum EndPoint1 {
+    case getWeatherForCityWith(coordinate: CLLocationCoordinate2D)
+}
+
+// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+extension EndPoint1 {
+    
+    var apiURL: URL? {
+        let baseURL = "https://api.openweathermap.org/data/2.5/"
+        switch self {
+        case .getWeatherForCityWith(let coordinate):
+            let path = "weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&appid=\(Constants.APIKey)"
+            return URL(string: baseURL + path) 
+        }
+    }
+}
 
 public struct Endpoint {
     var path: String
