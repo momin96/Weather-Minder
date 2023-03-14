@@ -19,6 +19,7 @@
 		50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6929BF2C46009A1190 /* HomeView.swift */; };
 		50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A6B29BF3058009A1190 /* LocationManager.swift */; };
 		50E96A7229C026C6009A1190 /* GeoCoderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */; };
+		50E96A7429C0424E009A1190 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7329C0424E009A1190 /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		50E96A6929BF2C46009A1190 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		50E96A6B29BF3058009A1190 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCoderUseCase.swift; sourceTree = "<group>"; };
+		50E96A7329C0424E009A1190 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				50E96A6929BF2C46009A1190 /* HomeView.swift */,
 				50E96A6B29BF3058009A1190 /* LocationManager.swift */,
 				50E96A7129C026C6009A1190 /* GeoCoderUseCase.swift */,
+				50E96A7529C042A0009A1190 /* Models */,
 				50E96A6529BF2720009A1190 /* Network Layer */,
 				50E96A3D29BF2578009A1190 /* Assets.xcassets */,
 				50E96A3F29BF2578009A1190 /* Preview Content */,
@@ -157,6 +160,14 @@
 				50E96A6729BF28E4009A1190 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50E96A7529C042A0009A1190 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50E96A7329C0424E009A1190 /* City.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +306,7 @@
 				50E96A7229C026C6009A1190 /* GeoCoderUseCase.swift in Sources */,
 				50E96A3C29BF2577009A1190 /* ContentView.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
+				50E96A7429C0424E009A1190 /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
