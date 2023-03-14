@@ -34,6 +34,7 @@
 		50E96A9129C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */; };
 		50E96A9329C0A807009A1190 /* GeocodeDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9229C0A807009A1190 /* GeocodeDataServiceImpl.swift */; };
 		50E96A9529C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9429C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift */; };
+		50E96A9729C0B89B009A1190 /* GeocodeDataServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastUseCaseImpl.swift; sourceTree = "<group>"; };
 		50E96A9229C0A807009A1190 /* GeocodeDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeDataServiceImpl.swift; sourceTree = "<group>"; };
 		50E96A9429C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeDataServiceImpl.swift; sourceTree = "<group>"; };
+		50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeDataServiceImplTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				50E96A4A29BF2578009A1190 /* Weather_MinderTests.swift */,
+				50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */,
 			);
 			path = "Weather MinderTests";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E96A9729C0B89B009A1190 /* GeocodeDataServiceImplTests.swift in Sources */,
 				50E96A4B29BF2578009A1190 /* Weather_MinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
