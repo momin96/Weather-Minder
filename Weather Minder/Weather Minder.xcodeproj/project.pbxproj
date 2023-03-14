@@ -30,6 +30,8 @@
 		50E96A8929C0A0F9009A1190 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8829C0A0F9009A1190 /* DataParser.swift */; };
 		50E96A8B29C0A4DE009A1190 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8A29C0A4DE009A1190 /* DataService.swift */; };
 		50E96A8D29C0A524009A1190 /* GetWeatherForecastDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8C29C0A524009A1190 /* GetWeatherForecastDataServiceImpl.swift */; };
+		50E96A8F29C0A610009A1190 /* WeatherUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8E29C0A610009A1190 /* WeatherUseCaseImpl.swift */; };
+		50E96A9129C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		50E96A8829C0A0F9009A1190 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		50E96A8A29C0A4DE009A1190 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		50E96A8C29C0A524009A1190 /* GetWeatherForecastDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherForecastDataServiceImpl.swift; sourceTree = "<group>"; };
+		50E96A8E29C0A610009A1190 /* WeatherUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUseCaseImpl.swift; sourceTree = "<group>"; };
+		50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastUseCaseImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				50E96A7729C06651009A1190 /* WeatherUseCase.swift */,
+				50E96A8E29C0A610009A1190 /* WeatherUseCaseImpl.swift */,
+				50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */,
 				50E96A7129C026C6009A1190 /* GeocodeUseCase.swift */,
 			);
 			path = "Domain Layer";
@@ -370,10 +376,12 @@
 				50E96A8529C0970B009A1190 /* GetForecastRequest.swift in Sources */,
 				50E96A7829C06651009A1190 /* WeatherUseCase.swift in Sources */,
 				50E96A8B29C0A4DE009A1190 /* DataService.swift in Sources */,
+				50E96A9129C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift in Sources */,
 				50E96A7229C026C6009A1190 /* GeocodeUseCase.swift in Sources */,
 				50E96A8129C075FD009A1190 /* WeatherListViewModel.swift in Sources */,
 				50E96A3C29BF2577009A1190 /* WeatherListView.swift in Sources */,
 				50E96A7E29C06B4F009A1190 /* GetWeatherDataServiceImpl.swift in Sources */,
+				50E96A8F29C0A610009A1190 /* WeatherUseCaseImpl.swift in Sources */,
 				50E96A8929C0A0F9009A1190 /* DataParser.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
 				50E96A8D29C0A524009A1190 /* GetWeatherForecastDataServiceImpl.swift in Sources */,
