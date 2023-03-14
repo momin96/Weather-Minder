@@ -23,6 +23,7 @@
 		50E96A7829C06651009A1190 /* WeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7729C06651009A1190 /* WeatherUseCase.swift */; };
 		50E96A7B29C06AE4009A1190 /* GeocodeDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7A29C06AE4009A1190 /* GeocodeDataService.swift */; };
 		50E96A7E29C06B4F009A1190 /* GetWeatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A7D29C06B4F009A1190 /* GetWeatherDataService.swift */; };
+		50E96A8129C075FD009A1190 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A8029C075FD009A1190 /* WeatherListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		50E96A7729C06651009A1190 /* WeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUseCase.swift; sourceTree = "<group>"; };
 		50E96A7A29C06AE4009A1190 /* GeocodeDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeDataService.swift; sourceTree = "<group>"; };
 		50E96A7D29C06B4F009A1190 /* GetWeatherDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherDataService.swift; sourceTree = "<group>"; };
+		50E96A8029C075FD009A1190 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */,
-				50E96A3B29BF2577009A1190 /* WeatherListView.swift */,
+				50E96A7F29C075F2009A1190 /* Weather List */,
 				50E96A6929BF2C46009A1190 /* HomeView.swift */,
 				50E96A7C29C06AE9009A1190 /* Data Layer */,
 				50E96A7929C066EF009A1190 /* Domain Layer */,
@@ -201,6 +203,15 @@
 				50E96A7D29C06B4F009A1190 /* GetWeatherDataService.swift */,
 			);
 			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		50E96A7F29C075F2009A1190 /* Weather List */ = {
+			isa = PBXGroup;
+			children = (
+				50E96A3B29BF2577009A1190 /* WeatherListView.swift */,
+				50E96A8029C075FD009A1190 /* WeatherListViewModel.swift */,
+			);
+			path = "Weather List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +350,7 @@
 				50E96A7B29C06AE4009A1190 /* GeocodeDataService.swift in Sources */,
 				50E96A7829C06651009A1190 /* WeatherUseCase.swift in Sources */,
 				50E96A7229C026C6009A1190 /* GeocodeUseCase.swift in Sources */,
+				50E96A8129C075FD009A1190 /* WeatherListViewModel.swift in Sources */,
 				50E96A3C29BF2577009A1190 /* WeatherListView.swift in Sources */,
 				50E96A7E29C06B4F009A1190 /* GetWeatherDataService.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
