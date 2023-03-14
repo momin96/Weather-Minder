@@ -9,22 +9,25 @@ import CoreLocation
 
 // Domain layer
 protocol GeocodeUseCase {
-    func execute(with city: String) async throws -> CLLocationCoordinate2D
+    associatedtype Input
+    associatedtype Output
+    func execute(with input: Input) async throws -> Output
 }
 
 struct GeocodeUseCaseImpl: GeocodeUseCase {
-    let geocodeDataService: GeocodeDataService
+    typealias Input = String
+    typealias Output = CLLocationCoordinate2D
     
-    func execute(with city: String) async throws -> CLLocationCoordinate2D {
-        try await geocodeDataService.geocode(with: city)
+    let geocodeDataService: GeocodeDataService
+
+    func execute(with input: String) async throws -> CLLocationCoordinate2D {
+        try await geocodeDataService.geocode(with: input)
     }
 }
 
-protocol ReverseGeocodeUseCase {
-    func execute(with coordinates: CLLocationCoordinate2D) async throws -> String
-}
-
-struct ReverseGeocodeUseCaseImpl: ReverseGeocodeUseCase {
+struct ReverseGeocodeUseCaseImpl: GeocodeUseCase {
+    typealias Input = CLLocationCoordinate2D
+    typealias Output = String
     
     let reverseGeocodeDataService: ReverseGeocodeDataService
     
