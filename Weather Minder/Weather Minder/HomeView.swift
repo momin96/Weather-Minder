@@ -23,11 +23,59 @@ struct HomeView: View {
 
                 }
             }
+        }.onAppear {
+            viewModel.locationManager = locationManager
         }
     }
 }
 
 class HomeViewModel {
+    
+    var locationManager: LocationManager? {
+        didSet {
+            didSetLocationManager()
+        }
+    }
+    
+    let reverseGeocodeUseCase: ReverseGeocodeUseCaseImpl
+    let weatherForecastUseCase: WeatherForecastUseCaseImpl
+    
     init() {
+        reverseGeocodeUseCase = ReverseGeocodeUseCaseImpl(reverseGeocodeDataService: ReverseGeocodeDataServiceImpl())
+        weatherForecastUseCase = WeatherForecastUseCaseImpl(getWeatherForecastDataService: GetWeatherForecastDataServiceImpl())
+    }
+    
+    func didSetLocationManager() {
+        guard let coordinates = locationManager?.currentLocation?.coordinate else {
+            return
+        }
+        getCurrentCity(for: coordinates)
+        getWeather(for: coordinates)
+    }
+    
+    func getCurrentCity(for coordinates: CLLocationCoordinate2D) {
+        Task {
+            do {
+                let currentCity = try await reverseGeocodeUseCase.execute(with: coordinates)
+                print("currentCity \(currentCity)")
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+    
+    func getWeather(for coordinates: CLLocationCoordinate2D) {
+        Task {
+            do {
+                let forecastResponse = try await weatherForecastUseCase.execute(with: coordinates)
+                print(forecastResponse)
+            } catch {
+                print(error)
+            }
+        }
     }
 }
+
+

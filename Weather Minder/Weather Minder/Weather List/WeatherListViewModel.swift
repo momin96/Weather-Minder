@@ -13,8 +13,8 @@ class WeatherListViewModel: ObservableObject {
     @Published var disableSearchButton = false
     @Published var cities: [City] = []
 
-    let geocodeUseCase: GeocodeUseCase
-    let weatherUseCase: WeatherUseCase
+    let geocodeUseCase: GeocodeUseCaseImpl
+    let weatherUseCase: WeatherUseCaseImpl
     
     init() {
         geocodeUseCase = GeocodeUseCaseImpl(geocodeDataService: GeocodeDataServiceImpl())
