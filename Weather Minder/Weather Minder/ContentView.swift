@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
@@ -58,9 +59,10 @@ class ContentViewModel: ObservableObject {
             }
         }
     }
-    
-    func getWeather(for city: String, and coordinates: CLLocationCoordinate2D) {
-        
+    let getWeatherUseCase = GetWeatherUseCase()
+    func getWeather(for cityName: String, and coordinates: CLLocationCoordinate2D) {
+        let city = City(name: cityName, coordinates: coordinates)
+        getWeatherUseCase.execute(with: city)
     }
 }
 
@@ -70,52 +72,125 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
-import CoreLocation
-
-struct GeoCoderUseCase {
+import Combine
+class GetWeatherUseCase {
     
-    let geocoder = CLGeocoder()
-
-//
-//    func geo(_ cities: [String]) async -> any AsyncSequence {
-//        for city in cities {
-//            Task {
-//                do {
-//                    let location = try await GeoCoderUseCase().geocode(with: city)
-//                } catch {
-//
-//                }
-//            }
-//        }
-//    }
-//
-//
-//    func geocode(_ cities: [String]) async -> AsyncStream<Int> {
-//        return AsyncStream { continuation in
-//            for city in cities {
-//                do {
-//                    let location = try await GeoCoderUseCase().geocode(with: city)
-//                    continuation.yield(location)
-//                } catch {
-//                    continuation.finish(throwing: error)
-//                }
-//            }
-//            continuation.finish()
-//        }
-//    }
+    private var subscriptions = Set<AnyCancellable>()
     
-    func geocode(with city: String) async throws -> CLLocationCoordinate2D {
-        let geocoder = CLGeocoder()
-        let placemarks = try await geocoder.geocodeAddressString(city)
-        guard let placemark = placemarks.first,
-              let location = placemark.location else {
-            throw NSError(domain: "com.example.geocoding",
-                          code: 1,
-                          userInfo: [NSLocalizedDescriptionKey: "Unable to geocode city"])
-            
+    func execute(with city: City) {
+        let endPoint = EndPoint1.getWeatherForCityWith(coordinate: city.coordinates)
+        if let url = endPoint.apiURL {
+            print("url \(url)")
+            let pub = URLSession.shared.dataTaskPublisher(for: url)
+            pub.sink { completion in
+                print("completion \(completion)")
+            } receiveValue: { (data: Data, response: URLResponse) in
+                print("data \(data) response \(response)")
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    do {
+                         let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
+                        print(weatherResponse)
+                    } catch {
+                        print("Error \(error)")
+                    }
+                }
+            }
+            .store(in: &subscriptions)
         }
-        
-        return location.coordinate
     }
+}
+
+
+class City {
+    var name: String
+    var coordinates: CLLocationCoordinate2D
+    var weather: WeatherResponse?
+    
+    init(
+        name: String,
+        coordinates: CLLocationCoordinate2D,
+        weather: WeatherResponse? = nil
+    ) {
+        self.name = name
+        self.coordinates = coordinates
+        self.weather = weather
+    }
+}
+
+
+struct WeatherResponse: Codable {
+    let coord: Coordinates
+    let weather: [Weather]
+    let base: String
+    let main: Main
+//    let visibility: Int
+    let wind: Wind
+//    let rain: Rain?
+//    let clouds: Clouds
+//    let dt: Int
+//    let sys: Sys
+//    let timezone: Int
+//    let id: Int
+//    let name: String
+//    let cod: Int
+}
+
+struct Coordinates: Codable {
+    let lon: Double
+    let lat: Double
+}
+
+struct Weather: Codable {
+    let id: Int
+    let main: String
+    let description: String
+    let icon: String
+}
+
+struct Main: Codable {
+//    let temp: Double
+//    let feelsLike: Double
+    let tempMin: Double
+    let tempMax: Double
+//    let pressure: Int
+//    let humidity: Int
+//    let seaLevel: Int
+//    let grndLevel: Int
+
+    enum CodingKeys: String, CodingKey {
+//        case temp
+//        case feelsLike = "feels_like"
+        case tempMin = "temp_min"
+        case tempMax = "temp_max"
+//        case pressure
+//        case humidity
+//        case seaLevel = "sea_level"
+//        case grndLevel = "grnd_level"
+    }
+}
+
+struct Wind: Codable {
+    let speed: Double
+//    let deg: Int
+//    let gust: Double
+}
+
+struct Rain: Codable {
+    let oneHour: Double
+
+    enum CodingKeys: String, CodingKey {
+        case oneHour = "1h"
+    }
+}
+
+struct Clouds: Codable {
+    let all: Int
+}
+
+struct Sys: Codable {
+    let type: Int
+    let id: Int
+    let country: String
+    let sunrise: Int
+    let sunset: Int
 }
