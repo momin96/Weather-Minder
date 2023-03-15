@@ -1,49 +1,11 @@
 //
-//  HomeView.swift
+//  HomeViewModel.swift
 //  Weather Minder
 //
-//  Created by Nasir Ahmed Momin on 13/03/23.
+//  Created by Nasir Ahmed Momin on 15/03/23.
 //
 
 import CoreLocation
-import SwiftUI
-
-struct WeatherForecastList: View {
-    
-    let forecastList: [WeatherDetail]
-    
-    var body: some View {
-        List(forecastList, id: \.id) { list in
-            /*@START_MENU_TOKEN@*/Text(list.dt_txt)/*@END_MENU_TOKEN@*/
-        }
-    }
-}
-
-struct HomeView: View {
-    @EnvironmentObject var locationManager: LocationManager
-    
-    @StateObject var viewModel = HomeViewModel()
-    
-    var body: some View {
-        NavigationView {
-            
-            Form {
-                ForEach(viewModel.dateGroups, id: \.id ) { dateGroup in
-                    Section {
-                        WeatherForecastList(forecastList: dateGroup.items)
-                    } header: {
-                        Text(dateGroup.header)
-                    }
-                }
-            }
-            
-            .navigationTitle("5 days forcast for " + viewModel.currentCityName)
-            .navigationBarTitleDisplayMode(.inline)
-        }.onAppear {
-            viewModel.locationManager = locationManager
-        }
-    }
-}
 
 class HomeViewModel: ObservableObject {
     
@@ -110,9 +72,7 @@ class HomeViewModel: ObservableObject {
     func prepareGroups(for weatherList: [WeatherDetail]) -> [String: [WeatherDetail]] {
         Dictionary(grouping: weatherList) { weather in
             let date = Date(timeIntervalSince1970: TimeInterval(weather.dt))
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM, dd yyyy"
-            return dateFormatter.string(from: date)
+            return DateFormatter.stringInFormat_MMMddYYYY(for: date)
         }
     }
     

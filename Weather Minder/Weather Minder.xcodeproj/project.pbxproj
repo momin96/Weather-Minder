@@ -40,6 +40,8 @@
 		50E96A9D29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9C29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift */; };
 		50E96A9F29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9E29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift */; };
 		50E96AA129C18548009A1190 /* DateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA029C18548009A1190 /* DateGroup.swift */; };
+		50E96AA329C187B1009A1190 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA229C187B1009A1190 /* HomeViewModel.swift */; };
+		50E96AA629C187F6009A1190 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA529C187F6009A1190 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		50E96A9C29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeUseCaseTests.swift; sourceTree = "<group>"; };
 		50E96A9E29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeDataServiceImplTests.swift; sourceTree = "<group>"; };
 		50E96AA029C18548009A1190 /* DateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateGroup.swift; sourceTree = "<group>"; };
+		50E96AA229C187B1009A1190 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		50E96AA529C187F6009A1190 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */,
+				50E96AA529C187F6009A1190 /* Utils.swift */,
+				50E96AA429C187CD009A1190 /* Home */,
 				50E96A7F29C075F2009A1190 /* Weather List */,
-				50E96A6929BF2C46009A1190 /* HomeView.swift */,
 				50E96A7C29C06AE9009A1190 /* Data Layer */,
 				50E96A7929C066EF009A1190 /* Domain Layer */,
 				50E96A7629C05954009A1190 /* Core Location */,
@@ -260,6 +265,15 @@
 				50E96A8029C075FD009A1190 /* WeatherListViewModel.swift */,
 			);
 			path = "Weather List";
+			sourceTree = "<group>";
+		};
+		50E96AA429C187CD009A1190 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				50E96A6929BF2C46009A1190 /* HomeView.swift */,
+				50E96AA229C187B1009A1190 /* HomeViewModel.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,7 +409,9 @@
 				50E96A8729C09B8C009A1190 /* GetWeatherForCityRequest.swift in Sources */,
 				50E96A6429BF26A5009A1190 /* EndPoint.swift in Sources */,
 				50E96A9329C0A807009A1190 /* GeocodeDataServiceImpl.swift in Sources */,
+				50E96AA329C187B1009A1190 /* HomeViewModel.swift in Sources */,
 				50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */,
+				50E96AA629C187F6009A1190 /* Utils.swift in Sources */,
 				50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */,
 				50E96AA129C18548009A1190 /* DateGroup.swift in Sources */,
 				50E96A9529C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift in Sources */,
