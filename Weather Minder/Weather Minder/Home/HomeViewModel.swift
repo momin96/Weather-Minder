@@ -1,41 +1,22 @@
 //
-//  HomeView.swift
+//  HomeViewModel.swift
 //  Weather Minder
 //
-//  Created by Nasir Ahmed Momin on 13/03/23.
+//  Created by Nasir Ahmed Momin on 15/03/23.
 //
 
 import CoreLocation
-import SwiftUI
 
-struct HomeView: View {
-    @EnvironmentObject var locationManager: LocationManager
-    
-    @State var viewModel = HomeViewModel()
-    
-    var body: some View {
-        VStack {
-            WeatherListView()
-            locationManager.currentLocation.map { location in
-                HStack {
-                    Text("\(location.coordinate.latitude)")
-                    Text("  \(location.coordinate.longitude)")
-
-                }
-            }
-        }.onAppear {
-            viewModel.locationManager = locationManager
-        }
-    }
-}
-
-class HomeViewModel {
+class HomeViewModel: ObservableObject {
     
     var locationManager: LocationManager? {
         didSet {
             didSetLocationManager()
         }
     }
+    
+    @Published var dateGroups: [DateGroup] = []
+    @Published var currentCityName: String = ""
     
     let reverseGeocodeUseCase: ReverseGeocodeUseCaseImpl
     let weatherForecastUseCase: WeatherForecastUseCaseImpl
@@ -57,7 +38,9 @@ class HomeViewModel {
         Task {
             do {
                 let currentCity = try await reverseGeocodeUseCase.execute(with: coordinates)
-                print("currentCity \(currentCity)")
+                await MainActor.run {
+                    currentCityName = currentCity
+                }
             } catch {
                 print(error)
             }
@@ -70,11 +53,37 @@ class HomeViewModel {
         Task {
             do {
                 let forecastResponse = try await weatherForecastUseCase.execute(with: coordinates)
+                let groups = forecastComputation(forecastResponse)
+                await MainActor.run {
+                    dateGroups = groups
+                }
             } catch {
                 print(error)
             }
         }
     }
+
+    func forecastComputation(_ response: WeatherForecastResponse) -> [DateGroup] {
+        let weatherByDate = prepareGroups(for: response.list)
+        let dateGroups = sortWeatherList(weatherByDate)
+        return dateGroups
+    }
+    
+    func prepareGroups(for weatherList: [WeatherDetail]) -> [String: [WeatherDetail]] {
+        Dictionary(grouping: weatherList) { weather in
+            return DateFormatter.stringInFormat_MMMddYYYY(for: weather.dt)
+        }
+    }
+    
+    func sortWeatherList(_ weatherByDate: [String: [WeatherDetail]]) -> [DateGroup] {
+        var groups: [DateGroup] = []
+        for date in weatherByDate.keys.sorted() {
+            if let weatherDetails = weatherByDate[date] {
+                let group = DateGroup(header: date, items: weatherDetails)
+                groups.append(group)
+            }
+        }
+        
+        return groups
+    }
 }
-
-

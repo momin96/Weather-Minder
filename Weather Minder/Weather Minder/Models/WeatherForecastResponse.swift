@@ -26,6 +26,10 @@ struct WeatherDetail: Codable {
 //    let rain: Rain?
 //    let sys: Sys
     let dt_txt: String
+    
+    var id: UUID {
+        UUID()
+    }
 }
 
 //struct Main: Codable {
