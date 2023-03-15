@@ -15,7 +15,7 @@ struct WeatherTempretureView: View {
             Image(systemName: "thermometer.sun.circle")
             Text("min: \(main.minimum)")
             Text("max: \(main.maximum)")
-        }
+        }.foregroundColor(.blue)
     }
 }
 
@@ -27,6 +27,7 @@ struct WeatherWindView: View {
             Image(systemName: "wind.circle")
             Text(wind.windSpeedString)
         }
+        .foregroundColor(.blue)
     }
 }
 
@@ -39,6 +40,7 @@ struct WeatherDescriptionView: View {
                     Image(systemName: "smoke")
                     Text(weather.weatherDescription)
                 }
+                .foregroundColor(.gray)
             }
         }
     }
