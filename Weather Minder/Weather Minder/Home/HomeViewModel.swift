@@ -71,8 +71,7 @@ class HomeViewModel: ObservableObject {
     
     func prepareGroups(for weatherList: [WeatherDetail]) -> [String: [WeatherDetail]] {
         Dictionary(grouping: weatherList) { weather in
-            let date = Date(timeIntervalSince1970: TimeInterval(weather.dt))
-            return DateFormatter.stringInFormat_MMMddYYYY(for: date)
+            return DateFormatter.stringInFormat_MMMddYYYY(for: weather.dt)
         }
     }
     
