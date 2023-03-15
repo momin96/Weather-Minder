@@ -10,7 +10,6 @@ import CoreLocation
 
 class WeatherListViewModel: ObservableObject {
     @Published var searchText = ""
-    @Published var disableSearchButton = false
     @Published var alertMessage: String?
     @Published var errorAlert: Bool = false
     @Published var cities: [City] = [] {
@@ -27,15 +26,6 @@ class WeatherListViewModel: ObservableObject {
     init() {
         geocodeUseCase = GeocodeUseCaseImpl(geocodeDataService: GeocodeDataServiceImpl())
         weatherUseCase = WeatherUseCaseImpl(getWeatherDataService: GetWeatherDataServiceImpl())
-    }
-    
-    func shouldEnabledSearch(from text: String) {
-        let cities = text.components(separatedBy: ",")
-        if cities.count < 3 || cities.count > 7 {
-            disableSearchButton = true
-        } else {
-            disableSearchButton = false
-        }
     }
     
     func performSearch(with text: String) {
