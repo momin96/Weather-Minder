@@ -42,13 +42,11 @@ class HomeViewModel: ObservableObject {
                     currentCityName = currentCity
                 }
             } catch {
-                print(error)
+                throw error
             }
         }
     }
-    
-    // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-    
+        
     func getWeather(for coordinates: CLLocationCoordinate2D) {
         Task {
             do {
@@ -58,7 +56,7 @@ class HomeViewModel: ObservableObject {
                     dateGroups = groups
                 }
             } catch {
-                print(error)
+                throw error
             }
         }
     }
