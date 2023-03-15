@@ -44,7 +44,15 @@ struct WeatherListView: View {
     var bodyView: some View {
         VStack {
             if viewModel.alertMessage != nil {
-                Text(viewModel.alertMessage ?? "Unknow Error")
+                HStack {
+                    Image(systemName: "bolt.trianglebadge.exclamationmark")
+                        .imageScale(.large)
+                        .padding()
+                    Text(viewModel.alertMessage ?? "Unknow Error")
+                }
+                .padding(.horizontal, 30.0)
+                .font(.headline)
+                .foregroundColor(.red)
             } else {
                 Form {
                     List {
@@ -67,6 +75,8 @@ struct WeatherCard: View {
                 Image(systemName: "mappin.circle")
                 Text("In \(city.name)")
             }
+            .foregroundColor(.purple)
+            .font(.title3)
             
             city.weather.map { response in
                 VStack(alignment: .leading) {

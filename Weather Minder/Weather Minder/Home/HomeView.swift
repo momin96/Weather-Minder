@@ -23,17 +23,21 @@ struct HomeView: View {
                         WeatherDetailsList(forecastList: dateGroup.items)
                     } header: {
                         Text(dateGroup.header)
+                            .font(.title3)
                     }
                 }
             }
-            .navigationTitle("5 days forcast for " + viewModel.currentCityName)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(viewModel.currentCityName + " Forecast")
+            .foregroundColor(.orange)
+            .navigationBarTitleDisplayMode(.automatic)
+            
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         showWeatherList = true
                     } label: {
-                        Image(systemName: "magnifyingglass.circle")
+                        Image(systemName: "magnifyingglass")
+                            .imageScale(.large)
                     }
                 }
             }
@@ -66,9 +70,15 @@ private struct WeatherDetailCard: View {
                 Image(systemName: "stopwatch")
                 Text(DateTimeFormatter.stringInFormat_hhmma(for: detail.dt))
             }
-            WeatherTempretureView(main: detail.main)
-            WeatherWindView(wind: detail.wind)
+            .foregroundColor(.purple)
+            .font(.title3)
+
+                WeatherTempretureView(main: detail.main)
+                WeatherWindView(wind: detail.wind)
+            
             WeatherDescriptionView(weather: detail.weather)
+                
+                
         }
         .imageScale(.large)
     }

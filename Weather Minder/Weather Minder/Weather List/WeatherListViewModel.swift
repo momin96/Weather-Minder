@@ -44,7 +44,7 @@ class WeatherListViewModel: ObservableObject {
             for city in cities {
                 do {
                     let coordinates = try await geocodeUseCase.execute(with: city)
-                    await getWeather(for: city, and: coordinates)
+                    try await getWeather(for: city, and: coordinates)
                 } catch {
                     await prepareCachedData(for: city)
                     validation(for: error, name: city)
@@ -64,7 +64,7 @@ class WeatherListViewModel: ObservableObject {
         }
     }
 
-    func getWeather(for cityName: String, and coordinates: CLLocationCoordinate2D) async {
+    func getWeather(for cityName: String, and coordinates: CLLocationCoordinate2D) async throws {
         do {
             let city = City(name: cityName, coordinates: coordinates)
             let weatherResponse = try await weatherUseCase.execute(with: city)
@@ -73,7 +73,7 @@ class WeatherListViewModel: ObservableObject {
                 cities.append(city)
             }
         } catch {
-            print("Error \(error)")
+            throw error
         }
     }
     

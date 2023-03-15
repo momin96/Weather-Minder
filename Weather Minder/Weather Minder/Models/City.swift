@@ -89,7 +89,7 @@ struct Weather:Identifiable, Codable {
     let icon: String
     
     var weatherDescription: String {
-        "It seems \(description)"
+        "Seems \(description)"
     }
 }
 
