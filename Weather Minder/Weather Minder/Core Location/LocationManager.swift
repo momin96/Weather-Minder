@@ -10,7 +10,13 @@ import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
-    @Published var currentLocation: CLLocation?
+    @Published var currentLocation: CLLocation? {
+        didSet {
+            locationError = nil
+        }
+    }
+    
+    @Published var locationError: Error?
 
     override init() {
         super.init()
@@ -32,6 +38,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+        locationError = error
     }
 }
 
