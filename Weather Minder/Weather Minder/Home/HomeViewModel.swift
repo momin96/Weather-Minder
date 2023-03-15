@@ -17,6 +17,7 @@ class HomeViewModel: ObservableObject {
     
     @Published var dateGroups: [DateGroup] = []
     @Published var currentCityName: String = ""
+    @Published var errorMessage: String?
     
     let reverseGeocodeUseCase: ReverseGeocodeUseCaseImpl
     let weatherForecastUseCase: WeatherForecastUseCaseImpl
@@ -34,6 +35,10 @@ class HomeViewModel: ObservableObject {
         getWeather(for: coordinates)
     }
     
+    func pullToRefresh() {
+        locationManager?.setUpdates()
+    }
+    
     func getCurrentCity(for coordinates: CLLocationCoordinate2D) {
         Task {
             do {
@@ -42,6 +47,7 @@ class HomeViewModel: ObservableObject {
                     currentCityName = currentCity
                 }
             } catch {
+                await validation(of: error)
                 throw error
             }
         }
@@ -56,6 +62,7 @@ class HomeViewModel: ObservableObject {
                     dateGroups = groups
                 }
             } catch {
+                await validation(of: error)
                 throw error
             }
         }
@@ -83,5 +90,13 @@ class HomeViewModel: ObservableObject {
         }
         
         return groups
+    }
+    
+    func validation(of error: Error) async {
+        await MainActor.run {
+            if let err = error as? NSError, err.code == -1003 {
+                errorMessage = err.localizedDescription
+            }
+        }
     }
 }

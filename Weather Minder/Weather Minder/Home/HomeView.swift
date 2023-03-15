@@ -27,6 +27,9 @@ struct HomeView: View {
                     }
                 }
             }
+            .refreshable {
+                viewModel.pullToRefresh()
+            }
             .navigationTitle(viewModel.currentCityName + " Forecast")
             .foregroundColor(.orange)
             .navigationBarTitleDisplayMode(.automatic)
