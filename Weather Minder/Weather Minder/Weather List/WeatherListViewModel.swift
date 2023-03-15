@@ -9,9 +9,16 @@ import SwiftUI
 import CoreLocation
 
 class WeatherListViewModel: ObservableObject {
-    @Published var searchText = "Mumbai,New York,Berlin"
+    @Published var searchText = ""
     @Published var disableSearchButton = false
-    @Published var cities: [City] = []
+    @Published var alertMessage: String?
+    @Published var cities: [City] = [] {
+        didSet {
+            if !cities.isEmpty {
+                alertMessage = nil
+            }
+        }
+    }
 
     let geocodeUseCase: GeocodeUseCaseImpl
     let weatherUseCase: WeatherUseCaseImpl
@@ -39,8 +46,19 @@ class WeatherListViewModel: ObservableObject {
                     let coordinates = try await geocodeUseCase.execute(with: city)
                     await getWeather(for: city, and: coordinates)
                 } catch {
-                    prepareCachedData(for: city)
+                    await prepareCachedData(for: city)
+                    validation(for: error, name: city)
                     throw error
+                }
+            }
+        }
+    }
+    
+    func validation(for error: Error, name: String)   {
+        if cities.isEmpty {
+            Task {
+                await MainActor.run {
+                    alertMessage = "Unable to find city with name \(name), Please search again!"
                 }
             }
         }
@@ -59,14 +77,14 @@ class WeatherListViewModel: ObservableObject {
         }
     }
     
-    func prepareCachedData(for cityName: String) {
+    func prepareCachedData(for cityName: String) async {
         guard let wrappedData: City? = Storage().retrive(for: cityName),
             let cachedData = wrappedData else {
             return
         }
         
-        DispatchQueue.main.async {
-            self.cities.append(cachedData)
+        await MainActor.run {
+            cities.append(cachedData)
         }
     }
 }

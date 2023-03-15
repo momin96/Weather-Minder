@@ -13,6 +13,8 @@ struct HomeView: View {
     
     @StateObject var viewModel = HomeViewModel()
     
+    @State private var showWeatherList = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -26,6 +28,18 @@ struct HomeView: View {
             }
             .navigationTitle("5 days forcast for " + viewModel.currentCityName)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        showWeatherList = true
+                    } label: {
+                        Image(systemName: "magnifyingglass.circle")
+                    }
+                }
+            }
+            .sheet(isPresented: $showWeatherList) {
+                WeatherListView()
+            }
         }.onAppear {
             viewModel.locationManager = locationManager
         }
@@ -48,22 +62,13 @@ private struct WeatherDetailCard: View {
 
     var body: some View {
         LazyVStack(alignment: .leading) {
-            
             HStack {
                 Image(systemName: "stopwatch")
                 Text(DateTimeFormatter.stringInFormat_hhmma(for: detail.dt))
             }
-            
-            HStack {
-                Image(systemName: "thermometer.sun.circle")
-                Text("min: \(detail.main.minimum)")
-                Text("max: \(detail.main.maximum)")
-            }
-            
-            HStack {
-                Image(systemName: "wind.circle")
-                Text(detail.wind.windSpeedString)
-            }
+            WeatherTempretureView(main: detail.main)
+            WeatherWindView(wind: detail.wind)
+            WeatherDescriptionView(weather: detail.weather)
         }
         .imageScale(.large)
     }
