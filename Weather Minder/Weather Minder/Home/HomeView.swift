@@ -18,7 +18,7 @@ struct HomeView: View {
             Form {
                 ForEach(viewModel.dateGroups, id: \.id ) { dateGroup in
                     Section {
-                        WeatherForecastList(forecastList: dateGroup.items)
+                        WeatherDetailsList(forecastList: dateGroup.items)
                     } header: {
                         Text(dateGroup.header)
                     }
@@ -32,13 +32,35 @@ struct HomeView: View {
     }
 }
 
-struct WeatherForecastList: View {
+struct WeatherDetailsList: View {
     
     let forecastList: [WeatherDetail]
     
     var body: some View {
-        List(forecastList, id: \.id) { list in
-            /*@START_MENU_TOKEN@*/Text(list.dt_txt)/*@END_MENU_TOKEN@*/
+        List(forecastList, id: \.id) { detail in
+            WeatherDetailCard(weatherDetail: detail)
+        }
+    }
+}
+
+private struct WeatherDetailCard: View {
+    let weatherDetail: WeatherDetail
+
+    var body: some View {
+        LazyVStack(alignment: .leading) {
+            
+            HStack {
+                Image(systemName: "stopwatch")
+                    .imageScale(.large)
+                Text(DateTimeFormatter.stringInFormat_hhmma(for: weatherDetail.dt))
+            }
+            
+            HStack {
+                Image(systemName: "thermometer.sun.circle")
+                    .imageScale(.large)
+                Text("min: \(weatherDetail.main.minimum)")
+                Text("max: \(weatherDetail.main.maximum)")
+            }
         }
     }
 }
