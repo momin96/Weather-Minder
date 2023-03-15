@@ -40,3 +40,9 @@
 ## Note:
 - One layer only know about its adjecent layer, such as `View` layer knows only about `ViewModel` rest of other layer are unknown to `View` & same thing is for other layer too.
 - Very limited Unit Tests are covered in due to time constraints.
+
+Demo
+
+https://user-images.githubusercontent.com/9208271/225377995-7b92c1cf-3629-4c23-a319-ecff6c454b82.mp4
+
+
