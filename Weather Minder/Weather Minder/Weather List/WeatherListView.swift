@@ -18,9 +18,6 @@ struct WeatherListView: View {
             bodyView
             .searchable(text: $viewModel.searchText,
                         prompt: Text("Enter cities name by comma separated"))
-            .onChange(of: viewModel.searchText) { newValue in
-                viewModel.shouldEnabledSearch(from: newValue)
-            }
             .onSubmit(of: .search) {
                 viewModel.performSearch(with: viewModel.searchText)
             }
@@ -34,9 +31,15 @@ struct WeatherListView: View {
                     }
                 }
             }
-            .disableAutocorrection(viewModel.disableSearchButton)
             .navigationTitle("Search for city")
             .navigationBarTitleDisplayMode(.inline)
+            .alert(isPresented: $viewModel.errorAlert, content: {
+                Alert(title: Text("Error: City Count"),
+                      message: Text("Searchable cities must be between 3 and 7 with comma separated"),
+                      dismissButton: .default(Text("Yeah Sure")) {
+                    print("dismiss")
+                })
+            })
         }
     }
     

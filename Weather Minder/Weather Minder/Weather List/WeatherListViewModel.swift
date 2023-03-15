@@ -10,8 +10,8 @@ import CoreLocation
 
 class WeatherListViewModel: ObservableObject {
     @Published var searchText = ""
-    @Published var disableSearchButton = false
     @Published var alertMessage: String?
+    @Published var errorAlert: Bool = false
     @Published var cities: [City] = [] {
         didSet {
             if !cities.isEmpty {
@@ -28,27 +28,22 @@ class WeatherListViewModel: ObservableObject {
         weatherUseCase = WeatherUseCaseImpl(getWeatherDataService: GetWeatherDataServiceImpl())
     }
     
-    func shouldEnabledSearch(from text: String) {
-        let cities = text.components(separatedBy: ",")
-        if cities.count < 3 || cities.count > 7 {
-            disableSearchButton = true
-        } else {
-            disableSearchButton = false
-        }
-    }
-    
     func performSearch(with text: String) {
         cities = []
-        let cities = text.components(separatedBy: ",")
-        Task {
-            for city in cities {
-                do {
-                    let coordinates = try await geocodeUseCase.execute(with: city)
-                    try await getWeather(for: city, and: coordinates)
-                } catch {
-                    await prepareCachedData(for: city)
-                    validation(for: error, name: city)
-                    throw error
+        let cityNames = text.components(separatedBy: ",")
+        if cityNames.count < 3 || cityNames.count > 7 {
+            errorAlert = true
+        } else {
+            Task {
+                for city in cityNames {
+                    do {
+                        let coordinates = try await geocodeUseCase.execute(with: city)
+                        try await getWeather(for: city, and: coordinates)
+                    } catch {
+                        await prepareCachedData(for: city)
+                        validation(for: error, name: city)
+                        throw error
+                    }
                 }
             }
         }
