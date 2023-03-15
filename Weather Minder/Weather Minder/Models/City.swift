@@ -94,6 +94,9 @@ struct Weather:Identifiable, Codable {
 }
 
 struct Main: Codable {
+    
+    private let kelvin = 273.15 // Default unit is Kelvin
+
     let tempMin: Double
     let tempMax: Double
 
@@ -103,15 +106,15 @@ struct Main: Codable {
     }
     
     var minimumaAndMaximumTempreture: String {
-        "Today min & max temprature would be \(String(format: "%.2f", tempMin)) \(String(format: "%.2f", tempMax)) respectivly."
+        "Today min & max temprature would be \(String(format: "%.1f °C", tempMin - kelvin)) \(String(format: "%.1f °C", tempMax - kelvin)) respectivly."
     }
     
     var minimum: String {
-        String(format: "%.1f", tempMin)
+        String(format: "%.1f °C", tempMin - kelvin)
     }
     
     var maximum: String {
-        String(format: "%.1f", tempMax)
+        String(format: "%.1f °C", tempMax - kelvin)
     }
 }
 
@@ -119,6 +122,6 @@ struct Wind: Codable {
     let speed: Double
     
     var windSpeedString: String {
-        "Wind speed is about \(String(format: "%.2f", speed))"
+        "Wind speed is about \(String(format: "%.2f", speed)) km/hr"
     }
 }

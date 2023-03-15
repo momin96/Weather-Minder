@@ -38,29 +38,33 @@ struct WeatherDetailsList: View {
     
     var body: some View {
         List(forecastList, id: \.id) { detail in
-            WeatherDetailCard(weatherDetail: detail)
+            WeatherDetailCard(detail: detail)
         }
     }
 }
 
 private struct WeatherDetailCard: View {
-    let weatherDetail: WeatherDetail
+    let detail: WeatherDetail
 
     var body: some View {
         LazyVStack(alignment: .leading) {
             
             HStack {
                 Image(systemName: "stopwatch")
-                    .imageScale(.large)
-                Text(DateTimeFormatter.stringInFormat_hhmma(for: weatherDetail.dt))
+                Text(DateTimeFormatter.stringInFormat_hhmma(for: detail.dt))
             }
             
             HStack {
                 Image(systemName: "thermometer.sun.circle")
-                    .imageScale(.large)
-                Text("min: \(weatherDetail.main.minimum)")
-                Text("max: \(weatherDetail.main.maximum)")
+                Text("min: \(detail.main.minimum)")
+                Text("max: \(detail.main.maximum)")
+            }
+            
+            HStack {
+                Image(systemName: "wind.circle")
+                Text(detail.wind.windSpeedString)
             }
         }
+        .imageScale(.large)
     }
 }
