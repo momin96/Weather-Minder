@@ -44,15 +44,7 @@ struct WeatherListView: View {
     var bodyView: some View {
         VStack {
             if viewModel.alertMessage != nil {
-                HStack {
-                    Image(systemName: "bolt.trianglebadge.exclamationmark")
-                        .imageScale(.large)
-                        .padding()
-                    Text(viewModel.alertMessage ?? "Unknow Error")
-                }
-                .padding(.horizontal, 30.0)
-                .font(.headline)
-                .foregroundColor(.red)
+                ErrorView(errorMessage: viewModel.alertMessage)
             } else {
                 Form {
                     List {

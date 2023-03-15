@@ -7,6 +7,8 @@
 - Incase using Physical device, makes sure that you make proper changes in SignIn Capcblities.
 - Makes sure that physical device support has minimum 15.0
 - Hit run from top left corner.
+- Allow for location permission. 
+- Incase using Simulator makes sure you Simulate the location from Xcode
 - Required API is already included, which I ll revert in some days
 
 ## The App Supports

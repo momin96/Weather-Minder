@@ -17,7 +17,40 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            Form {
+            formView
+                .refreshable {
+                    viewModel.pullToRefresh()
+                }
+                .navigationTitle(viewModel.currentCityName + " Forecast")
+                .foregroundColor(.orange)
+                .navigationBarTitleDisplayMode(.automatic)
+            
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button {
+                            showWeatherList = true
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                                .imageScale(.large)
+                        }
+                    }
+                }
+                .sheet(isPresented: $showWeatherList) {
+                    WeatherListView()
+                }
+        }.onAppear {
+            viewModel.locationManager = locationManager
+        }
+    }
+    
+    @ViewBuilder
+    var formView: some View {
+        Form {
+            if locationManager.locationError != nil {
+                ErrorView(errorMessage: "Unable to fetch your current Location")
+            } else if viewModel.errorMessage != nil {
+                ErrorView(errorMessage: viewModel.errorMessage)
+            } else {
                 ForEach(viewModel.dateGroups, id: \.id ) { dateGroup in
                     Section {
                         WeatherDetailsList(forecastList: dateGroup.items)
@@ -27,25 +60,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle(viewModel.currentCityName + " Forecast")
-            .foregroundColor(.orange)
-            .navigationBarTitleDisplayMode(.automatic)
-            
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        showWeatherList = true
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                            .imageScale(.large)
-                    }
-                }
-            }
-            .sheet(isPresented: $showWeatherList) {
-                WeatherListView()
-            }
-        }.onAppear {
-            viewModel.locationManager = locationManager
         }
     }
 }
@@ -72,13 +86,10 @@ private struct WeatherDetailCard: View {
             }
             .foregroundColor(.purple)
             .font(.title3)
-
-                WeatherTempretureView(main: detail.main)
-                WeatherWindView(wind: detail.wind)
             
+            WeatherTempretureView(main: detail.main)
+            WeatherWindView(wind: detail.wind)
             WeatherDescriptionView(weather: detail.weather)
-                
-                
         }
         .imageScale(.large)
     }

@@ -45,3 +45,20 @@ struct WeatherDescriptionView: View {
         }
     }
 }
+
+struct ErrorView: View {
+    
+    let errorMessage: String?
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "bolt.trianglebadge.exclamationmark")
+                .imageScale(.large)
+                .padding()
+            Text(errorMessage ?? "Unknow Error")
+        }
+        .padding(.horizontal, 10.0)
+        .font(.headline)
+        .foregroundColor(.red)
+    }
+}
