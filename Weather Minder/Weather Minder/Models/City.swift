@@ -105,6 +105,14 @@ struct Main: Codable {
     var minimumaAndMaximumTempreture: String {
         "Today min & max temprature would be \(String(format: "%.2f", tempMin)) \(String(format: "%.2f", tempMax)) respectivly."
     }
+    
+    var minimum: String {
+        String(format: "%.1f", tempMin)
+    }
+    
+    var maximum: String {
+        String(format: "%.1f", tempMax)
+    }
 }
 
 struct Wind: Codable {
