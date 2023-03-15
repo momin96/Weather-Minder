@@ -42,6 +42,7 @@
 		50E96AA129C18548009A1190 /* DateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA029C18548009A1190 /* DateGroup.swift */; };
 		50E96AA329C187B1009A1190 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA229C187B1009A1190 /* HomeViewModel.swift */; };
 		50E96AA629C187F6009A1190 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA529C187F6009A1190 /* Utils.swift */; };
+		50E96AA829C188E3009A1190 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA729C188E3009A1190 /* HomeViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		50E96AA029C18548009A1190 /* DateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateGroup.swift; sourceTree = "<group>"; };
 		50E96AA229C187B1009A1190 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		50E96AA529C187F6009A1190 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		50E96AA729C188E3009A1190 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */,
 				50E96A9E29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift */,
 				50E96A9C29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift */,
+				50E96AA729C188E3009A1190 /* HomeViewModelTests.swift */,
 			);
 			path = "Weather MinderTests";
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E96AA829C188E3009A1190 /* HomeViewModelTests.swift in Sources */,
 				50E96A9729C0B89B009A1190 /* GeocodeDataServiceImplTests.swift in Sources */,
 				50E96A9F29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift in Sources */,
 				50E96A4B29BF2578009A1190 /* Weather_MinderTests.swift in Sources */,
