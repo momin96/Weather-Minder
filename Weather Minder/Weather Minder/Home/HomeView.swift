@@ -33,7 +33,7 @@ struct HomeView: View {
                     Button {
                         showWeatherList = true
                     } label: {
-                        Image(systemName: "network")
+                        Image(systemName: "magnifyingglass.circle")
                     }
                 }
             }
@@ -62,22 +62,13 @@ private struct WeatherDetailCard: View {
 
     var body: some View {
         LazyVStack(alignment: .leading) {
-            
             HStack {
                 Image(systemName: "stopwatch")
                 Text(DateTimeFormatter.stringInFormat_hhmma(for: detail.dt))
             }
-            
-            HStack {
-                Image(systemName: "thermometer.sun.circle")
-                Text("min: \(detail.main.minimum)")
-                Text("max: \(detail.main.maximum)")
-            }
-            
-            HStack {
-                Image(systemName: "wind.circle")
-                Text(detail.wind.windSpeedString)
-            }
+            WeatherTempretureView(main: detail.main)
+            WeatherWindView(wind: detail.wind)
+            WeatherDescriptionView(weather: detail.weather)
         }
         .imageScale(.large)
     }

@@ -11,6 +11,7 @@ import CoreLocation
 class WeatherListViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var disableSearchButton = false
+    @Published var alertMessage: String?
     @Published var cities: [City] = [] {
         didSet {
             if !cities.isEmpty {
@@ -18,8 +19,6 @@ class WeatherListViewModel: ObservableObject {
             }
         }
     }
-    
-    @Published var alertMessage: String?
 
     let geocodeUseCase: GeocodeUseCaseImpl
     let weatherUseCase: WeatherUseCaseImpl

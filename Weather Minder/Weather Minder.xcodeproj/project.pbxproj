@@ -43,6 +43,7 @@
 		50E96AA329C187B1009A1190 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA229C187B1009A1190 /* HomeViewModel.swift */; };
 		50E96AA629C187F6009A1190 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA529C187F6009A1190 /* Utils.swift */; };
 		50E96AA829C188E3009A1190 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA729C188E3009A1190 /* HomeViewModelTests.swift */; };
+		50E96AAA29C1B88C009A1190 /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96AA929C1B88C009A1190 /* CommonViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		50E96AA229C187B1009A1190 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		50E96AA529C187F6009A1190 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		50E96AA729C188E3009A1190 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		50E96AA929C1B88C009A1190 /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				50E96A3929BF2577009A1190 /* Weather_MinderApp.swift */,
 				50E96AA529C187F6009A1190 /* Utils.swift */,
+				50E96AA929C1B88C009A1190 /* CommonViews.swift */,
 				50E96AA429C187CD009A1190 /* Home */,
 				50E96A7F29C075F2009A1190 /* Weather List */,
 				50E96A7C29C06AE9009A1190 /* Data Layer */,
@@ -416,6 +419,7 @@
 				50E96A6A29BF2C46009A1190 /* HomeView.swift in Sources */,
 				50E96AA629C187F6009A1190 /* Utils.swift in Sources */,
 				50E96A6C29BF3058009A1190 /* LocationManager.swift in Sources */,
+				50E96AAA29C1B88C009A1190 /* CommonViews.swift in Sources */,
 				50E96AA129C18548009A1190 /* DateGroup.swift in Sources */,
 				50E96A9529C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift in Sources */,
 				50E96A7B29C06AE4009A1190 /* Geocodable.swift in Sources */,

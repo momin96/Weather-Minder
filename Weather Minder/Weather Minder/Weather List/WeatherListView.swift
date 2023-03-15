@@ -63,12 +63,15 @@ struct WeatherCard: View {
     var city: City
     var body: some View {
         VStack(alignment: .leading) {
-            Text("In \(city.name)")
+            HStack {
+                Image(systemName: "mappin.circle")
+                Text("In \(city.name)")
+            }
+            
             city.weather.map { response in
                 VStack(alignment: .leading) {
-                    Text(response.main.minimumaAndMaximumTempreture)
-                    Text(response.wind.windSpeedString)
-                    
+                    WeatherTempretureView(main: response.main)
+                    WeatherWindView(wind: response.wind)
                     WeatherDescriptionView(weather: response.weather)
                 }
             }
@@ -76,16 +79,6 @@ struct WeatherCard: View {
     }
 }
 
-struct WeatherDescriptionView: View {
-    let weather: [Weather]
-    var body: some View {
-        Group {
-            ForEach(weather) { weather in
-                Text(weather.weatherDescription)
-            }
-        }
-    }
-}
 
 struct WeatherListView_Previews: PreviewProvider {
     static var previews: some View {
