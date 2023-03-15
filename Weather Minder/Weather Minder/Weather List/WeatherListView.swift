@@ -99,7 +99,7 @@ struct ErrorView: View {
                 .padding()
             Text(errorMessage ?? "Unknow Error")
         }
-        .padding(.horizontal, 30.0)
+        .padding(.horizontal, 10.0)
         .font(.headline)
         .foregroundColor(.red)
     }

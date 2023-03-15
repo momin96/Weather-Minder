@@ -48,6 +48,8 @@ struct HomeView: View {
         Form {
             if locationManager.locationError != nil {
                 ErrorView(errorMessage: "Unable to fetch your current Location")
+            } else if viewModel.errorMessage != nil {
+                ErrorView(errorMessage: viewModel.errorMessage)
             } else {
                 ForEach(viewModel.dateGroups, id: \.id ) { dateGroup in
                     Section {

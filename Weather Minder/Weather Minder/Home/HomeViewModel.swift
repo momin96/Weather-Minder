@@ -37,6 +37,7 @@ class HomeViewModel: ObservableObject {
     
     func pullToRefresh() {
         locationManager?.setUpdates()
+        didSetLocationManager()
     }
     
     func getCurrentCity(for coordinates: CLLocationCoordinate2D) {
@@ -94,7 +95,7 @@ class HomeViewModel: ObservableObject {
     
     func validation(of error: Error) async {
         await MainActor.run {
-            if let err = error as? NSError, err.code == -1003 {
+            if let err = error as? NSError {
                 errorMessage = err.localizedDescription
             }
         }
