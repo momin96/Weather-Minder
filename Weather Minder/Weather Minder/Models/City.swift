@@ -8,11 +8,11 @@
 import Foundation
 import CoreLocation
 
-class City: ObservableObject, Identifiable {
+class City: Codable, Identifiable {
     var id = UUID()
     var name: String
     var coordinates: CLLocationCoordinate2D
-    @Published var weather: WeatherResponse?
+    var weather: WeatherResponse?
     
     init(
         name: String,
@@ -22,6 +22,50 @@ class City: ObservableObject, Identifiable {
         self.name = name
         self.coordinates = coordinates
         self.weather = weather
+    }
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case name
+        case coordinates
+        case weather
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        coordinates = try container.decode(CLLocationCoordinate2D.self, forKey: .coordinates)
+        weather = try container.decode(WeatherResponse.self, forKey: .weather)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(coordinates, forKey: .coordinates)
+        try container.encode(weather, forKey: .weather)
+    }
+}
+
+extension CLLocationCoordinate2D: Codable {
+    
+    enum CodingKeys: CodingKey {
+        case latitude
+        case longitude
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.init()
+        latitude = try container.decode(Double.self, forKey: .latitude)
+        longitude = try container.decode(Double.self, forKey: .longitude)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(latitude, forKey: .latitude)
+        try container.encode(longitude, forKey: .longitude)
     }
 }
 

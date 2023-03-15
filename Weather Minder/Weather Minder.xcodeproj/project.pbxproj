@@ -34,6 +34,11 @@
 		50E96A9129C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */; };
 		50E96A9329C0A807009A1190 /* GeocodeDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9229C0A807009A1190 /* GeocodeDataServiceImpl.swift */; };
 		50E96A9529C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9429C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift */; };
+		50E96A9729C0B89B009A1190 /* GeocodeDataServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */; };
+		50E96A9929C0BA3A009A1190 /* GeocodeUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9829C0BA3A009A1190 /* GeocodeUseCaseImpl.swift */; };
+		50E96A9B29C0BA42009A1190 /* ReverseGeocodeUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9A29C0BA42009A1190 /* ReverseGeocodeUseCaseImpl.swift */; };
+		50E96A9D29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9C29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift */; };
+		50E96A9F29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E96A9E29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,11 @@
 		50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastUseCaseImpl.swift; sourceTree = "<group>"; };
 		50E96A9229C0A807009A1190 /* GeocodeDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeDataServiceImpl.swift; sourceTree = "<group>"; };
 		50E96A9429C0A81C009A1190 /* ReverseGeocodeDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeDataServiceImpl.swift; sourceTree = "<group>"; };
+		50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeDataServiceImplTests.swift; sourceTree = "<group>"; };
+		50E96A9829C0BA3A009A1190 /* GeocodeUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeUseCaseImpl.swift; sourceTree = "<group>"; };
+		50E96A9A29C0BA42009A1190 /* ReverseGeocodeUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeUseCaseImpl.swift; sourceTree = "<group>"; };
+		50E96A9C29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeUseCaseTests.swift; sourceTree = "<group>"; };
+		50E96A9E29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeDataServiceImplTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				50E96A4A29BF2578009A1190 /* Weather_MinderTests.swift */,
+				50E96A9629C0B89B009A1190 /* GeocodeDataServiceImplTests.swift */,
+				50E96A9E29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift */,
+				50E96A9C29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift */,
 			);
 			path = "Weather MinderTests";
 			sourceTree = "<group>";
@@ -219,6 +232,8 @@
 				50E96A8E29C0A610009A1190 /* WeatherUseCaseImpl.swift */,
 				50E96A9029C0A61A009A1190 /* WeatherForecastUseCaseImpl.swift */,
 				50E96A7129C026C6009A1190 /* GeocodeUseCase.swift */,
+				50E96A9829C0BA3A009A1190 /* GeocodeUseCaseImpl.swift */,
+				50E96A9A29C0BA42009A1190 /* ReverseGeocodeUseCaseImpl.swift */,
 			);
 			path = "Domain Layer";
 			sourceTree = "<group>";
@@ -392,6 +407,8 @@
 				50E96A8F29C0A610009A1190 /* WeatherUseCaseImpl.swift in Sources */,
 				50E96A8929C0A0F9009A1190 /* DataParser.swift in Sources */,
 				50E96A3A29BF2577009A1190 /* Weather_MinderApp.swift in Sources */,
+				50E96A9929C0BA3A009A1190 /* GeocodeUseCaseImpl.swift in Sources */,
+				50E96A9B29C0BA42009A1190 /* ReverseGeocodeUseCaseImpl.swift in Sources */,
 				50E96A8D29C0A524009A1190 /* GetWeatherForecastDataServiceImpl.swift in Sources */,
 				50E96A8329C096EE009A1190 /* WeatherForecastResponse.swift in Sources */,
 				50E96A7429C0424E009A1190 /* City.swift in Sources */,
@@ -402,7 +419,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E96A9729C0B89B009A1190 /* GeocodeDataServiceImplTests.swift in Sources */,
+				50E96A9F29C0C264009A1190 /* ReverseGeocodeDataServiceImplTests.swift in Sources */,
 				50E96A4B29BF2578009A1190 /* Weather_MinderTests.swift in Sources */,
+				50E96A9D29C0BB55009A1190 /* ReverseGeocodeUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
