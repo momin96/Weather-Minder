@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 
 class WeatherListViewModel: ObservableObject {
-    @Published var searchText = "Mumbai,New York,Berlin"
+    @Published var searchText = ""
     @Published var disableSearchButton = false
     @Published var cities: [City] = []
 

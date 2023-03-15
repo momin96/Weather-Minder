@@ -13,6 +13,8 @@ struct HomeView: View {
     
     @StateObject var viewModel = HomeViewModel()
     
+    @State private var showWeatherList = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -26,6 +28,18 @@ struct HomeView: View {
             }
             .navigationTitle("5 days forcast for " + viewModel.currentCityName)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        showWeatherList = true
+                    } label: {
+                        Image(systemName: "network")
+                    }
+                }
+            }
+            .sheet(isPresented: $showWeatherList) {
+                WeatherListView()
+            }
         }.onAppear {
             viewModel.locationManager = locationManager
         }

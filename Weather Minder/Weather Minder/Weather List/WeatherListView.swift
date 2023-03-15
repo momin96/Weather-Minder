@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WeatherListView: View {
+    
+    @Environment(\.dismiss) var dismiss
+
     @StateObject var viewModel = WeatherListViewModel()
     
     var body: some View {
@@ -29,8 +32,19 @@ struct WeatherListView: View {
             .onSubmit(of: .search) {
                 viewModel.performSearch(with: viewModel.searchText)
             }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .imageScale(.large)
+                    }
+                }
+            }
             .disableAutocorrection(viewModel.disableSearchButton)
-            .navigationTitle("Weather App")
+            .navigationTitle("Search for city")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
