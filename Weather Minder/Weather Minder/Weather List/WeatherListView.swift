@@ -37,6 +37,13 @@ struct WeatherListView: View {
             .disableAutocorrection(viewModel.disableSearchButton)
             .navigationTitle("Search for city")
             .navigationBarTitleDisplayMode(.inline)
+            .alert(isPresented: $viewModel.errorAlert, content: {
+                Alert(title: Text("City Count error"),
+                      message: Text("Searchable cities must be between 3 and 7 with comma separated"),
+                      dismissButton: .default(Text("Yeah Sure")) {
+                    print("dismiss")
+                })
+            })
         }
     }
     
