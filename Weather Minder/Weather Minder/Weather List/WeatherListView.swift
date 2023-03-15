@@ -15,15 +15,7 @@ struct WeatherListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Form {
-                    List {
-                        ForEach(viewModel.cities, id: \.id) { city in
-                            WeatherCard(city: city)
-                        }
-                    }
-                }
-            }
+            bodyView
             .searchable(text: $viewModel.searchText,
                         prompt: Text("Enter cities name by comma separated"))
             .onChange(of: viewModel.searchText) { newValue in
@@ -45,6 +37,23 @@ struct WeatherListView: View {
             .disableAutocorrection(viewModel.disableSearchButton)
             .navigationTitle("Search for city")
             .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    @ViewBuilder
+    var bodyView: some View {
+        VStack {
+            if viewModel.alertMessage != nil {
+                Text(viewModel.alertMessage ?? "Unknow Error")
+            } else {
+                Form {
+                    List {
+                        ForEach(viewModel.cities, id: \.id) { city in
+                            WeatherCard(city: city)
+                        }
+                    }
+                }
+            }
         }
     }
 }
